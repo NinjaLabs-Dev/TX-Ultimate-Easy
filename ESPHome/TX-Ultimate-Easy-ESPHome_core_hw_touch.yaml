@@ -466,6 +466,14 @@ tx_ultimate_easy:
         ESP_LOGD("core_hw_touch", "Touch event:");
         ESP_LOGD("core_hw_touch", "  State:    %i (%s)", touch.state, touch.state_str.c_str());
         ESP_LOGD("core_hw_touch", "  Position: %i", touch.x);
+        if (touch.state == 1) {  // Assuming state 1 indicates a touch event
+          id(light_eu_top).turn_on();
+          id(light_eu_top).set_brightness(1.0);
+          id(light_eu_top).set_rgb(0.0, 1.0, 0.0);
+          id(light_eu_top).set_effect("Rainbow");
+          delay(1000);  // Wait for 1 second
+          id(light_eu_top).turn_off();
+        }
 
 uart:
   - id: uart_touch
