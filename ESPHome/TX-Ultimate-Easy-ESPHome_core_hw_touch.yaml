@@ -21,6 +21,17 @@ binary_sensor:
     internal: true
     disabled_by_default: true
     platform: template
+    on_press:
+      - light.turn_on:
+          id: light_eu_top
+          brightness: 100%
+          red: 0%
+          green: 100%
+          blue: 0%
+          effect: "Rainbow"
+      - delay: 1s
+      - light.turn_off:
+          id: light_eu_top
 
   - id: bs_button_1_click_event
     name: Button 1 - Click event
